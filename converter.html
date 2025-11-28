@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Converter</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <div class="logo">Zodiac Calendar</div>
+            <nav>
+                <a href="index.html" class="btn-primary">Back to Calendar</a>
+            </nav>
+        </header>
+
+        <main class="month-grid-panel" style="max-width: 600px; margin: 0 auto;">
+            <h1>Date Converter</h1>
+            <br>
+
+            <div style="margin-bottom: 2rem;">
+                <h3>Gregorian to Zodiac</h3>
+                <input type="date" id="gregorian-input"
+                    style="padding: 0.5rem; border-radius: 6px; border: 1px solid var(--glass-border); background: var(--secondary-color); color: white;">
+                <button id="convert-to-zodiac" class="btn-primary">Convert</button>
+                <div id="zodiac-result" style="margin-top: 1rem; font-size: 1.2rem; color: var(--accent-color);"></div>
+            </div>
+
+            <hr style="border-color: var(--glass-border);">
+            <br>
+
+            <!-- TODO: Zodiac to Gregorian could be added here -->
+        </main>
+    </div>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/calendar-system.js"></script>
+    <script>
+        const calendar = window.zodiacCalendar;
+        const i18n = window.i18n;
+
+        document.getElementById('convert-to-zodiac').addEventListener('click', () => {
+            const input = document.getElementById('gregorian-input').value;
+            if (!input) return;
+
+            const date = new Date(input);
+            // Fix timezone offset issue for pure date input
+            const userTimezoneOffset = date.getTimezoneOffset() * 60000;
+            const adjustedDate = new Date(date.getTime() + userTimezoneOffset);
+
+            const zDate = calendar.fromGregorian(adjustedDate);
+
+            const monthName = i18n.getMonthName(zDate.month);
+            const result = `${monthName} ${zDate.day}, Year ${zDate.year}`;
+
+            document.getElementById('zodiac-result').textContent = result;
+        });
+    </script>
+</body>
+
+</html>
