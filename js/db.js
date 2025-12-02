@@ -6,13 +6,13 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID",
-    measurementId: "G-MEASUREMENT_ID"
+    apiKey: "AIzaSyARk-X9WszK_gaANeQ9SVkbO_VKBx0sxkw",
+    authDomain: "calendar-99d03.firebaseapp.com",
+    projectId: "calendar-99d03",
+    storageBucket: "calendar-99d03.firebasestorage.app",
+    messagingSenderId: "672497069680",
+    appId: "1:672497069680:web:efdc8f79295987c08d8eb5",
+    measurementId: "G-52E96W9ZYR"
 };
 
 // Initialize Firebase
